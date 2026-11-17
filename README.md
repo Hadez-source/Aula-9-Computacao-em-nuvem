@@ -53,3 +53,20 @@ spec:
   selector: {app: web-aula9}
   ports: [{port: 80, targetPort: 80}]
 EOF
+
+Passo 3
+root@controlplane:~$ kubectl apply -f aula9.yaml
+deployment.apps/web-aula9 created
+service/web-aula9 created
+root@controlplane:~$ kubectl -n aula9 rollout status deployment/web-aula9
+deployment "web-aula9" successfully rolled out
+root@controlplane:~$ kubectl -n aula9 get deployment,pods,service
+NAME                        READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/web-aula9   2/2     2            2           54s
+
+NAME                             READY   STATUS    RESTARTS   AGE
+pod/web-aula9-649b495bff-7m2k2   1/1     Running   0          54s
+pod/web-aula9-649b495bff-qlmvz   1/1     Running   0          54s
+
+NAME                TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)   AGE
+service/web-aula9   ClusterIP   10.104.205.116   <none>        80/TCP    54s
