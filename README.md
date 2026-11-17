@@ -1,5 +1,5 @@
 # Aula-9-Computacao-em-nuvem
-
+Erick da Silva Rodrigues TADS
 Passo 1
 root@controlplane:~$ kubectl get nodes
 NAME           STATUS   ROLES           AGE   VERSION
