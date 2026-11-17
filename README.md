@@ -70,3 +70,11 @@ pod/web-aula9-649b495bff-qlmvz   1/1     Running   0          54s
 
 NAME                TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)   AGE
 service/web-aula9   ClusterIP   10.104.205.116   <none>        80/TCP    54s
+
+Passo 4
+root@controlplane:~$ POD=$(kubectl -n aula9 get pods -l app=web-aula9 \
+  -o jsonpath='{.items[0].metadata.name}')
+root@controlplane:~$ kubectl -n aula9 exec "$POD" -- \
+  wget -qO- http://web-aula9
+<h1>Versao 1</h1>
+root@controlplane:~$ 
