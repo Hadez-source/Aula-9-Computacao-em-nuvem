@@ -110,3 +110,15 @@ root@controlplane:~$ POD=$(kubectl -n aula9 get pods -l app=web-aula9 \
 root@controlplane:~$ kubectl -n aula9 exec "$POD" -- \
   wget -qO- http://web-aula9
 <h1>Versao 2</h1>
+
+Passo 8
+root@controlplane:~$ kubectl -n aula9 rollout undo deployment/web-aula9
+Warning: resource deployments/web-aula9 was previously managed with 'kubectl apply'. Rolling back will not update the kubectl.kubernetes.io/last-applied-configuration annotation, which may cause unexpected behavior on future 'kubectl apply' operations. Consider using 'kubectl apply' with your previous configuration file instead.
+deployment.apps/web-aula9 rolled back
+root@controlplane:~$ kubectl -n aula9 rollout status deployment/web-aula9
+deployment "web-aula9" successfully rolled out
+root@controlplane:~$ kubectl -n aula9 rollout history deployment/web-aula9
+deployment.apps/web-aula9 
+REVISION  CHANGE-CAUSE
+2         <none>
+3         <none>
