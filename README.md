@@ -78,3 +78,13 @@ root@controlplane:~$ kubectl -n aula9 exec "$POD" -- \
   wget -qO- http://web-aula9
 <h1>Versao 1</h1>
 root@controlplane:~$ 
+
+Passo 5
+root@controlplane:~$ kubectl -n aula9 set env deployment/web-aula9 VERSAO=2
+deployment.apps/web-aula9 env updated
+root@controlplane:~$ kubectl -n aula9 rollout status deployment/web-aula9
+kubectl -n aula9 get pods -l app=web-aula9 -w
+deployment "web-aula9" successfully rolled out
+NAME                        READY   STATUS    RESTARTS   AGE
+web-aula9-8797dc9dd-ndd9z   1/1     Running   0          13s
+web-aula9-8797dc9dd-z8h5n   1/1     Running   0          11s
