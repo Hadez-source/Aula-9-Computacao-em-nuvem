@@ -139,3 +139,17 @@ Depois da atualização, a resposta HTTP passou a mostrar **Versao 2**. Foram cr
 
 3 Rollback
 Após realizar o rollback, a resposta HTTP voltou a mostrar **Versao 1**. Os dois Pods ficaram prontos novamente (2/2) e a configuração anterior foi restaurada. A revisão atual passou a ser a número 3.
+
+
+Desafio em dupla
+1 O que desencadeou o novo rollout?
+A mudança da variável VERSAo de 1 para 2 fez o Kubernete iniciar um novo rollout, criando novos Pods com a versão atualizada.
+
+2 Por que o Service continuou com o mesmo nome?
+Porque o Service não precisou ser alterado, ele continuou direcionando as requisições para os Pods que tinham as mesmas labels.
+
+3 Qual a contribuição da readiness para a atualização?
+A readiness verifica se os Pods estão prontos para receber requisições, evitando enviar acessos para Pods que ainda não estão preparados.
+
+4 O que você precisa conferir após um rollback?
+É preciso conferir se a versão antiga voltou, se os Pods estão funcionando normalmente e se estão prontos para receber requisições.
