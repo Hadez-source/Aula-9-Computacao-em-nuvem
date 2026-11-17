@@ -88,3 +88,18 @@ deployment "web-aula9" successfully rolled out
 NAME                        READY   STATUS    RESTARTS   AGE
 web-aula9-8797dc9dd-ndd9z   1/1     Running   0          13s
 web-aula9-8797dc9dd-z8h5n   1/1     Running   0          11s
+
+Passo 6
+root@controlplane:~$ kubectl -n aula9 rollout history deployment/web-aula9
+deployment.apps/web-aula9 
+REVISION  CHANGE-CAUSE
+1         <none>
+2         <none>
+
+root@controlplane:~$ kubectl -n aula9 get replicasets
+NAME                   DESIRED   CURRENT   READY   AGE
+web-aula9-649b495bff   0         0         0       9m46s
+web-aula9-8797dc9dd    2         2         2       118s
+root@controlplane:~$ kubectl -n aula9 get deployment web-aula9
+NAME        READY   UP-TO-DATE   AVAILABLE   AGE
+web-aula9   2/2     2            2           9m57s
