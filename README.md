@@ -103,3 +103,10 @@ web-aula9-8797dc9dd    2         2         2       118s
 root@controlplane:~$ kubectl -n aula9 get deployment web-aula9
 NAME        READY   UP-TO-DATE   AVAILABLE   AGE
 web-aula9   2/2     2            2           9m57s
+
+Passo 7
+root@controlplane:~$ POD=$(kubectl -n aula9 get pods -l app=web-aula9 \
+  -o jsonpath='{.items[0].metadata.name}')
+root@controlplane:~$ kubectl -n aula9 exec "$POD" -- \
+  wget -qO- http://web-aula9
+<h1>Versao 2</h1>
