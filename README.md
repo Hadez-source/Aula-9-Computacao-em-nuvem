@@ -122,3 +122,10 @@ deployment.apps/web-aula9
 REVISION  CHANGE-CAUSE
 2         <none>
 3         <none>
+
+Passo 9
+root@controlplane:~$ POD=$(kubectl -n aula9 get pods -l app=web-aula9 \
+  -o jsonpath='{.items[0].metadata.name}')
+root@controlplane:~$ kubectl -n aula9 exec "$POD" -- \
+  wget -qO- http://web-aula9
+<h1>Versao 1</h1>
