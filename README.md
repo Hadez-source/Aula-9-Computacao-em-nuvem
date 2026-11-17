@@ -129,3 +129,13 @@ root@controlplane:~$ POD=$(kubectl -n aula9 get pods -l app=web-aula9 \
 root@controlplane:~$ kubectl -n aula9 exec "$POD" -- \
   wget -qO- http://web-aula9
 <h1>Versao 1</h1>
+
+Analise
+ Versão 1
+A resposta HTTP mostrou Versao 1. Os dois Pods estavam funcionando normalmente e prontos para receber requisições (2/2). A revisão inicial do Deployment foi a número 1.
+
+Versão 2
+Depois da atualização, a resposta HTTP passou a mostrar **Versao 2**. Foram criados novos Pods para substituir os antigos, mantendo os dois funcionando normalmente. A nova revisão passou a ser a número 2.
+
+3 Rollback
+Após realizar o rollback, a resposta HTTP voltou a mostrar **Versao 1**. Os dois Pods ficaram prontos novamente (2/2) e a configuração anterior foi restaurada. A revisão atual passou a ser a número 3.
